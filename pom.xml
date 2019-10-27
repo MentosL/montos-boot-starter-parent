@@ -20,6 +20,9 @@
         <module>montos-core</module>
         <module>montos-dao-api</module>
         <module>montos-dao-core</module>
+        <module>montos-dao-hibernate-starter</module>
+        <module>montos-mq-core-api</module>
+        <module>montos-mq-core</module>
     </modules>
 
     <properties>
@@ -38,6 +41,9 @@
         <montos.core-version>1.0.0-SNAPSHOT</montos.core-version>
         <montos.dao.api-version>1.0.0-SNAPSHOT</montos.dao.api-version>
         <montos.dao.core-version>1.0.0-SNAPSHOT</montos.dao.core-version>
+        <montos.dao.hibernate.starter-version>1.0.0-SNAPSHOT</montos.dao.hibernate.starter-version>
+        <montos.mq.core.api-version>1.0.0-SNAPSHOT</montos.mq.core.api-version>
+        <montos.mq.core-version>1.0.0-SNAPSHOT</montos.mq.core-version>
     </properties>
 
     <profiles> <!--    	 当前的配置是针对于测试环境打包为War，其他的环境打包成为jar-->
@@ -151,6 +157,24 @@
                 <groupId>com.montos.boot</groupId>
                 <artifactId>montos-dao-core</artifactId>
                 <version>${montos.dao.core-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-dao-hibernate-starter</artifactId>
+                <version>${montos.dao.hibernate.starter-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-mq-core-api</artifactId>
+                <version>${montos.mq.core.api-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-mq-core</artifactId>
+                <version>${montos.mq.core-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
