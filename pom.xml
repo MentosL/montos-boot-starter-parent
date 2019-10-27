@@ -1,0 +1,334 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jimistore.boot</groupId>
+	<artifactId>nemo-boot-starter-parent</artifactId>
+	<version>1.11.1-RELEASE</version>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>nemo-core-api</module>
+		<module>nemo-core</module>
+		<module>nemo-rpc-eureka-api</module>
+		<module>nemo-rpc-eureka-starter</module>
+		<!-- 
+		<module>nemo-monitor-server</module>
+		<module>nemo-rpc-eureka-server</module>
+		<module>nemo-monitor-server</module>
+		<module>nemo-sleuth-zipkin-server</module>
+		<module>nemo-config-server</module>
+		 -->
+		<module>nemo-sleuth-starter</module>
+		<module>nemo-dao-api</module>
+		<module>nemo-dao-core</module>
+		<module>nemo-dao-hibernate-starter</module>
+		<module>nemo-mq-core-api</module>
+		<module>nemo-mq-core</module>
+		<module>nemo-mq-activemq-starter</module>
+		<module>nemo-mq-rabbitmq-starter</module>
+		<module>nemo-mq-rocketmq-starter</module>
+		<module>nemo-lock-starter</module>
+		<module>nemo-fuse-starter</module>
+		<module>nemo-security-starter</module>
+		<module>nemo-sliding-window-starter</module>
+		<module>nemo-id-generator-starter</module>
+
+	</modules>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.9.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<hibernate.version>4.3.11.Final</hibernate.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<common.util.version>1.1.0-RELEASE</common.util.version>
+		<de.codecentric.version>1.5.2</de.codecentric.version>
+		<jsonrpc4j.version>1.2.0</jsonrpc4j.version>
+		<portlet.api.version>2.0</portlet.api.version>
+		<jwt.version>3.3.0</jwt.version>
+		<rocketmq.version>3.6.2.Final</rocketmq.version>
+		<ons.client.version>1.7.9.Final</ons.client.version>
+		<hikaricp.version>3.3.1</hikaricp.version>
+
+		<nemo.core.api.version>1.9.0-RELEASE</nemo.core.api.version>
+		<nemo.core.version>1.10.10-RELEASE</nemo.core.version>
+		<nemo.dao.api.version>1.11.1-RELEASE</nemo.dao.api.version>
+		<nemo.dao.core.version>1.10.7-RELEASE</nemo.dao.core.version>
+		<nemo.dao.hibernate.version>1.11.1-RELEASE</nemo.dao.hibernate.version>
+		<nemo.mq.core.api.version>1.9.7-RELEASE</nemo.mq.core.api.version>
+		<nemo.mq.core.version>1.10.6-RELEASE</nemo.mq.core.version>
+		<nemo.mq.activemq.version>1.10.6-RELEASE</nemo.mq.activemq.version>
+		<nemo.mq.rabbitmq.version>1.10.6-RELEASE</nemo.mq.rabbitmq.version>
+		<nemo.mq.rocketmq.version>1.10.9-RELEASE</nemo.mq.rocketmq.version>
+		<nemo.rpc.eureka.api.version>1.9.1-RELEASE</nemo.rpc.eureka.api.version>
+		<nemo.rpc.eureka.version>1.10.10-RELEASE</nemo.rpc.eureka.version>
+		<nemo.lock.version>1.9.7-RELEASE</nemo.lock.version>
+		<nemo.security.version>1.10.13-RELEASE</nemo.security.version>
+		<nemo.fuse.version>1.10.4-RELEASE</nemo.fuse.version>
+		<nemo.monitor.server.version>1.10.11-RELEASE</nemo.monitor.server.version>
+		<nemo.rpc.eureka.server.version>1.10.11-RELEASE</nemo.rpc.eureka.server.version>
+		<nemo.config.server.version>1.4.0-RELEASE</nemo.config.server.version>
+		<nemo.sliding.window.version>1.10.3-RELEASE</nemo.sliding.window.version>
+		<nemo.id.generator.version>1.9.21-RELEASE</nemo.id.generator.version>
+		
+	</properties>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<build>
+				<finalName>ROOT</finalName>
+			</build>
+			<properties>
+				<build.packaging>war</build.packaging>
+				<build.tomcat.scope>provided</build.tomcat.scope>
+			</properties>
+		</profile>
+		<profile>
+			<id>default</id>
+			<properties>
+				<build.packaging>jar</build.packaging>
+				<build.tomcat.scope>compile</build.tomcat.scope>
+			</properties>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.jimistore.util</groupId>
+				<artifactId>common-util-parent</artifactId>
+				<version>${common.util.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Dalston.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-core-api</artifactId>
+				<version>${nemo.core.api.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-core</artifactId>
+				<version>${nemo.core.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-rpc-eureka-api</artifactId>
+				<version>${nemo.rpc.eureka.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-rpc-eureka-starter</artifactId>
+				<version>${nemo.rpc.eureka.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.portlet</groupId>
+				<artifactId>portlet-api</artifactId>
+				<version>${portlet.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.briandilley.jsonrpc4j</groupId>
+				<artifactId>jsonrpc4j</artifactId>
+				<version>${jsonrpc4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-mq-core-api</artifactId>
+				<version>${nemo.mq.core.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-mq-core</artifactId>
+				<version>${nemo.mq.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-mq-activemq-starter</artifactId>
+				<version>${nemo.mq.activemq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-mq-rabbitmq-starter</artifactId>
+				<version>${nemo.mq.rabbitmq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-mq-rocketmq-starter</artifactId>
+				<version>${nemo.mq.rocketmq.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-dao-api</artifactId>
+				<version>${nemo.dao.api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-dao-core</artifactId>
+				<version>${nemo.dao.core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-dao-hibernate-starter</artifactId>
+				<version>${nemo.dao.hibernate.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-lock-starter</artifactId>
+				<version>${nemo.lock.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-security-starter</artifactId>
+				<version>${nemo.security.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-sliding-window-starter</artifactId>
+				<version>${nemo.sliding.window.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-fuse-starter</artifactId>
+				<version>${nemo.fuse.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.jimistore.boot</groupId>
+				<artifactId>nemo-id-generator-starter</artifactId>
+				<version>${nemo.id.generator.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.auth0</groupId>
+				<artifactId>java-jwt</artifactId>
+				<version>${jwt.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/com.alibaba.rocketmq/rocketmq-client -->
+			<dependency>
+				<groupId>com.alibaba.rocketmq</groupId>
+				<artifactId>rocketmq-client</artifactId>
+				<version>${rocketmq.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.aliyun.openservices</groupId>
+				<artifactId>ons-client</artifactId>
+				<version>${ons.client.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server</artifactId>
+				<version>${de.codecentric.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server-ui</artifactId>
+				<version>${de.codecentric.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-starter-client</artifactId>
+				<version>${de.codecentric.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>de.codecentric</groupId>
+				<artifactId>spring-boot-admin-server-ui-login</artifactId>
+				<version>${de.codecentric.version}</version>
+			</dependency>
+			
+			<!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+			<dependency>
+			    <groupId>com.zaxxer</groupId>
+			    <artifactId>HikariCP</artifactId>
+			    <version>${hikaricp.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>${build.tomcat.scope}</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+		</dependency>
+
+	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>jimi-private-release</id>
+			<name>jimi-private-release</name>
+			<url>https://maven.jimistore.com/nexus/content/repositories/jimi-private-release/</url>
+		</repository>
+		<snapshotRepository>
+			<id>jimi-private-snapshot</id>
+			<name>jimi-private-snapshot</name>
+			<url>https://maven.jimistore.com/nexus/content/repositories/jimi-private-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+</project>
