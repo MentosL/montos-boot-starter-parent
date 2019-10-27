@@ -1,6 +1,6 @@
 package com.montos.boot.montos.dao.api.core;
 
-public interface INemoDataSourceRegister {
+public interface IMontosDataSourceRegister {
 
 	/**
 	 * 数据源类型标识

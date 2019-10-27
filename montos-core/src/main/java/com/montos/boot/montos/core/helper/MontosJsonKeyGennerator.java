@@ -1,11 +1,11 @@
 package com.montos.boot.montos.core.helper;
 
-import com.jimistore.boot.nemo.core.util.JsonString;
+import com.montos.boot.montos.core.util.JsonString;
 import org.springframework.cache.interceptor.KeyGenerator;
 
 import java.lang.reflect.Method;
 
-public class NemoJsonKeyGennerator implements KeyGenerator {
+public class MontosJsonKeyGennerator implements KeyGenerator {
 	
 	class Key{
 		String className;

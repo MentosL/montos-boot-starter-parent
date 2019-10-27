@@ -1,6 +1,6 @@
-package com.jimistore.boot.nemo.dao.api.exception;
+package com.montos.boot.montos.dao.api.exception;
 
-import com.jimistore.boot.nemo.core.api.exception.BaseException;
+import com.montos.boot.montos.core.api.exception.BaseException;
 
 public class DaoException extends BaseException {
 

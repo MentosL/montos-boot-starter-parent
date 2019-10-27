@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.dao.api.entity;
+package com.montos.boot.montos.dao.api.entity;
 
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;

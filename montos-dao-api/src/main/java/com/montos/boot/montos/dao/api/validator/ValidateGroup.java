@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.dao.api.validator;
+package com.montos.boot.montos.dao.api.validator;
 
 public class ValidateGroup {
 	

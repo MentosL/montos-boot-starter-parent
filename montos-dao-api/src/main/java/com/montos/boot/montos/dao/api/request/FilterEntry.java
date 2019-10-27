@@ -1,8 +1,8 @@
-package com.jimistore.boot.nemo.dao.api.request;
+package com.montos.boot.montos.dao.api.request;
+
+import com.montos.boot.montos.dao.api.enums.Compare;
 
 import java.io.Serializable;
-
-import com.jimistore.boot.nemo.dao.api.enums.Compare;
 
 public class FilterEntry {
 	

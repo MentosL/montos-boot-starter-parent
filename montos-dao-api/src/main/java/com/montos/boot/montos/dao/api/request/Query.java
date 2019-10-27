@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.dao.api.request;
+package com.montos.boot.montos.dao.api.request;
 
 public class Query<T> implements IQuery<T> {
 	

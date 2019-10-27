@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.core.util;
+package com.montos.boot.montos.core.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -7,14 +7,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @SuppressWarnings("rawtypes")
 public class ClassUtil {
@@ -22,7 +15,7 @@ public class ClassUtil {
 	/**
 	 * 得到对象的泛型的类型
 	 * 
-	 * @param obj
+	 * @param c
 	 * @return
 	 */
 	public static Class getTemplateClass(Class c) {
@@ -36,7 +29,7 @@ public class ClassUtil {
 	/**
 	 * 得到对象的泛型的类型
 	 * 
-	 * @param obj
+	 * @param c
 	 * @return
 	 */
 	public static Type[] getTemplateClasses(Class c) {
@@ -132,7 +125,8 @@ public class ClassUtil {
 	/**
 	 * 根据属性获取属性的get方法
 	 * 
-	 * @param field
+	 * @param name
+	 * @param classz
 	 * @return
 	 */
 	public static String getMethodNameByFieldName(String name, Class classz) {
@@ -307,7 +301,7 @@ public class ClassUtil {
 	/**
 	 * 判断类是否包含某注解
 	 * 
-	 * @param classz
+	 * @param field
 	 * @param annotation
 	 * @return
 	 */
@@ -333,7 +327,8 @@ public class ClassUtil {
 	
 	/**
 	 * 
-	 * @param annotationClass
+	 * @param classz
+	 * @param annotation
 	 * @return
 	 */
 	public static List<Field> getFieldByAnnotation(Class classz,Class annotation){
@@ -372,15 +367,6 @@ public class ClassUtil {
 	 */
 	public static List<Field> getFields(Class classz, String[] fieldNames) {
 		List<Field> fieldList = new ArrayList<Field>();
-//		Set<Field> fields = new HashSet<Field>();
-//		for (Field field : classz.getDeclaredFields()) {
-//			fields.add(field);
-//		}
-//		for (Field field : classz.getFields()) {
-//			fields.add(field);
-//		}
-//
-//		fieldList.addAll(fields);
 		ClassUtil.fillFields(fieldList, classz);
 		if (fieldNames != null) {
 			for (int i = 0; i < fieldList.size(); i++) {
@@ -426,7 +412,6 @@ public class ClassUtil {
 							.invoke(srcObj, new Object[] { null });
 				}
 			} catch (Exception e) {
-				// e.printStackTrace();
 			}
 		}
 	}
@@ -471,14 +456,12 @@ public class ClassUtil {
 					}
 				} else {
 					ClassUtil.clearSelf(dest, srcObj);
-//					ClassUtil.clearPersistentProxy(dest);
 				}
 				srcObj.getClass()
 						.getMethod(setMethodName,
 								new Class[] { field.getType() })
 						.invoke(srcObj, new Object[] { dest });
 			} catch (Exception e) {
-//				e.printStackTrace();
 			}
 		}
 	}

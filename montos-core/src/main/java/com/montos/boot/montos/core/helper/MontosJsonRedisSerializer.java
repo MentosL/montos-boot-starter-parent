@@ -2,12 +2,12 @@ package com.montos.boot.montos.core.helper;
 
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jimistore.boot.nemo.core.util.ClassUtil;
+import com.montos.boot.montos.core.util.ClassUtil;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.SerializationException;
 
 @SuppressWarnings("rawtypes")
-public class NemoJsonRedisSerializer extends Jackson2JsonRedisSerializer {
+public class MontosJsonRedisSerializer extends Jackson2JsonRedisSerializer {
 	
 	public class Cache{
 		private String className;
@@ -27,11 +27,11 @@ public class NemoJsonRedisSerializer extends Jackson2JsonRedisSerializer {
 		
 	}
 	@SuppressWarnings("unchecked")
-	public NemoJsonRedisSerializer(Class type) {
+	public MontosJsonRedisSerializer(Class type) {
 		super(type);
 	}
 
-	public NemoJsonRedisSerializer(JavaType javaType) {
+	public MontosJsonRedisSerializer(JavaType javaType) {
 		super(javaType);
 	}
 

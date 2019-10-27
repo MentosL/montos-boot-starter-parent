@@ -1,5 +1,5 @@
-package com.jimistore.boot.nemo.core.api.enums;
-public enum JsonMode{
+package com.montos.boot.montos.core.api.enums;
+public enum JsonMode {
 	Include,
 	Exclusion
 }

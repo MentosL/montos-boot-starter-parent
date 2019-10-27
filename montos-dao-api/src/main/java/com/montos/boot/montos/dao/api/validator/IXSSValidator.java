@@ -1,6 +1,6 @@
-package com.jimistore.boot.nemo.dao.api.validator;
+package com.montos.boot.montos.dao.api.validator;
 
-import com.jimistore.boot.nemo.dao.api.exception.XssValidatorException;
+import com.montos.boot.montos.dao.api.exception.XssValidatorException;
 
 public interface IXSSValidator {
 	

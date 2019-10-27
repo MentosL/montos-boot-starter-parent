@@ -1,7 +1,4 @@
-package com.jimistore.boot.nemo.core.helper;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+package com.montos.boot.montos.core.helper;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
@@ -12,6 +9,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Aspect
 @Order(11)

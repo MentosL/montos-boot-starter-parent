@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.core.util;
+package com.montos.boot.montos.core.util;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

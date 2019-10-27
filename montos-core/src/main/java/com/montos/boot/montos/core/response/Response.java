@@ -1,9 +1,9 @@
-package com.jimistore.boot.nemo.core.response;
+package com.montos.boot.montos.core.response;
+
+import com.montos.boot.montos.core.api.annotation.Json;
+import com.montos.boot.montos.core.api.exception.BaseException;
 
 import java.io.Serializable;
-
-import com.jimistore.boot.nemo.core.api.annotation.Json;
-import com.jimistore.boot.nemo.core.api.exception.BaseException;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 @Json(notNull=true)

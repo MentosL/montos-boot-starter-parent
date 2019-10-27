@@ -1,11 +1,11 @@
-package com.jimistore.boot.nemo.core.api.annotation;
+package com.montos.boot.montos.core.api.annotation;
+
+import com.montos.boot.montos.core.api.enums.JsonMode;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-
-import com.jimistore.boot.nemo.core.api.enums.JsonMode;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

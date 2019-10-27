@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.core.api.annotation;
+package com.montos.boot.montos.core.api.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

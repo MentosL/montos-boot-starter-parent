@@ -1,12 +1,12 @@
-package com.jimistore.boot.nemo.dao.api;
+package com.montos.boot.montos.dao.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NemoDaoApiApplication {
+public class MontosDaoApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(NemoDaoApiApplication.class, args);
+		SpringApplication.run(MontosDaoApiApplication.class, args);
 	}
 }

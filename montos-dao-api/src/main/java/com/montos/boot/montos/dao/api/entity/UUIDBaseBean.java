@@ -1,14 +1,13 @@
-package com.jimistore.boot.nemo.dao.api.entity;
+package com.montos.boot.montos.dao.api.entity;
+
+import com.montos.boot.montos.dao.api.validator.ValidateGroup;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.NotBlank;
-
-import com.jimistore.boot.nemo.dao.api.validator.ValidateGroup;
 
 @MappedSuperclass
 public class UUIDBaseBean extends BaseBean<String>{

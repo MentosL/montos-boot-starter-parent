@@ -5,7 +5,7 @@ import org.springframework.validation.beanvalidation.MethodValidationPostProcess
 
 import javax.validation.Validator;
 
-public class NemoMethodValidationPostProcessor extends MethodValidationPostProcessor {
+public class MontosMethodValidationPostProcessor extends MethodValidationPostProcessor {
 
 	/**
 	 * 
@@ -14,7 +14,7 @@ public class NemoMethodValidationPostProcessor extends MethodValidationPostProce
 
 	@Override
 	protected Advice createMethodValidationAdvice(Validator validator) {
-		return (validator != null ? new NemoMethodValidationInterceptor(validator) : new NemoMethodValidationInterceptor());
+		return (validator != null ? new MontosMethodValidationInterceptor(validator) : new MontosMethodValidationInterceptor());
 	}
 
 }

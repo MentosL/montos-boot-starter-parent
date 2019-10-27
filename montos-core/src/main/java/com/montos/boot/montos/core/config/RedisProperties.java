@@ -1,11 +1,11 @@
-package com.jimistore.boot.nemo.core.config;
+package com.montos.boot.montos.core.config;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
-@ConfigurationProperties("nemo.redis")
+@ConfigurationProperties("montos.redis")
 public class RedisProperties {
 	
 	Map<String,Long> expired = new HashMap<String,Long>();

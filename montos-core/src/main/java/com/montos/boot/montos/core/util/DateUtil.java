@@ -1,11 +1,11 @@
-package com.jimistore.boot.nemo.core.util;
+package com.montos.boot.montos.core.util;
+
+import org.springframework.beans.factory.annotation.Value;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-
-import org.springframework.beans.factory.annotation.Value;
 
 public class DateUtil {
 	

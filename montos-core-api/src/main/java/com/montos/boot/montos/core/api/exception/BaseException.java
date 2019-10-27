@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.core.api.exception;
+package com.montos.boot.montos.core.api.exception;
 
 public class BaseException extends RuntimeException {
 

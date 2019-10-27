@@ -5,7 +5,7 @@ import org.springframework.beans.factory.FactoryBean;
 
 import javax.sql.DataSource;
 
-public interface INemoDataSourceFactory<T extends DataSource> extends FactoryBean<T> {
+public interface IMontosDataSourceFactory<T extends DataSource> extends FactoryBean<T> {
 
 	/**
 	 * 创建数据源
@@ -13,6 +13,6 @@ public interface INemoDataSourceFactory<T extends DataSource> extends FactoryBea
 	 * @param properties
 	 * @return
 	 */
-	public INemoDataSourceFactory<T> setNemoDataSourceProperties(MontosDataSourceProperties properties);
+	public IMontosDataSourceFactory<T> setNemoDataSourceProperties(MontosDataSourceProperties properties);
 
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jimistore.boot.nemo.core.helper.*;
+import com.montos.boot.montos.core.helper.*;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
@@ -30,123 +30,126 @@ import java.util.Map.Entry;
 @Configuration
 @EnableCaching
 @EnableConfigurationProperties(RedisProperties.class)
-public class NemoCoreAutoConfiguration {
+public class MontosCoreAutoConfiguration {
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/**");
-				registry.addMapping("/meta/**");
-			}
-		};
-	}
+    /**
+     * cors跨域问题解决
+     * @return
+     */
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/api/**");
+                registry.addMapping("/meta/**");
+            }
+        };
+    }
 
-	@Bean
-	public ResponseBodyWrapFactory responseBodyWrapFactory() {
-		return new ResponseBodyWrapFactory();
-	}
+    @Bean
+    public ResponseBodyWrapFactory responseBodyWrapFactory() {
+        return new ResponseBodyWrapFactory();
+    }
 
-	@Bean
-	public ResponseExceptionHandle responseExceptionHandle() {
-		return new ResponseExceptionHandle();
-	}
+    @Bean
+    public ResponseExceptionHandle responseExceptionHandle() {
+        return new ResponseExceptionHandle();
+    }
 
-	@Bean
-	public InitContextFilter initContextFilter() {
-		return new InitContextFilter();
-	}
+    @Bean
+    public InitContextFilter initContextFilter() {
+        return new InitContextFilter();
+    }
 
-	@Bean
-	public RequestProxyFilter requestProxyFilter() {
-		return new RequestProxyFilter();
-	}
+    @Bean
+    public RequestProxyFilter requestProxyFilter() {
+        return new RequestProxyFilter();
+    }
 
-	@Bean
-	public RequestLoggerAspect requestLoggerFilter() {
-		return new RequestLoggerAspect();
-	}
+    @Bean
+    public RequestLoggerAspect requestLoggerFilter() {
+        return new RequestLoggerAspect();
+    }
 
-	@Bean
-	public MessageInterpolator messageInterpolator() {
-		return new MessageInterpolator() {
+    @Bean
+    public MessageInterpolator messageInterpolator() {
+        return new MessageInterpolator() {
 
-			@Override
-			public String interpolate(String messageTemplate, Context context) {
-				return null;
-			}
+            @Override
+            public String interpolate(String messageTemplate, Context context) {
+                return null;
+            }
 
-			@Override
-			public String interpolate(String messageTemplate, Context context, Locale locale) {
+            @Override
+            public String interpolate(String messageTemplate, Context context, Locale locale) {
 
-				if (messageTemplate.indexOf("NotNull") >= 0 || messageTemplate.indexOf("NotBlank") >= 0) {
-					return " ${field} cannot be empty. ";
-				}
-				if (messageTemplate.indexOf("{") >= 0) {
-					return " ${field} format error. ";
-				}
-				return messageTemplate;
-			}
+                if (messageTemplate.indexOf("NotNull") >= 0 || messageTemplate.indexOf("NotBlank") >= 0) {
+                    return " ${field} cannot be empty. ";
+                }
+                if (messageTemplate.indexOf("{") >= 0) {
+                    return " ${field} format error. ";
+                }
+                return messageTemplate;
+            }
 
-		};
-	}
+        };
+    }
 
-	@Bean
-	public LocalValidatorFactoryBean localValidatorFactoryBean(MessageInterpolator messageInterpolator) {
-		LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
-		localValidatorFactoryBean.setMessageInterpolator(messageInterpolator);
-		return localValidatorFactoryBean;
-	}
+    @Bean
+    public LocalValidatorFactoryBean localValidatorFactoryBean(MessageInterpolator messageInterpolator) {
+        LocalValidatorFactoryBean localValidatorFactoryBean = new LocalValidatorFactoryBean();
+        localValidatorFactoryBean.setMessageInterpolator(messageInterpolator);
+        return localValidatorFactoryBean;
+    }
 
-	@Bean
-	public MethodValidationPostProcessor methodValidationPostProcessor(
-			LocalValidatorFactoryBean localValidatorFactoryBean) {
-		NemoMethodValidationPostProcessor methodValidationPostProcessor = new NemoMethodValidationPostProcessor();
-		methodValidationPostProcessor.setValidatorFactory(localValidatorFactoryBean);
-		methodValidationPostProcessor.setOrder(1);
-		return methodValidationPostProcessor;
-	}
+    @Bean
+    public MethodValidationPostProcessor methodValidationPostProcessor(
+            LocalValidatorFactoryBean localValidatorFactoryBean) {
+        MontosMethodValidationPostProcessor methodValidationPostProcessor = new MontosMethodValidationPostProcessor();
+        methodValidationPostProcessor.setValidatorFactory(localValidatorFactoryBean);
+        methodValidationPostProcessor.setOrder(1);
+        return methodValidationPostProcessor;
+    }
 
-	@Bean
-	@ConditionalOnMissingBean(StringRedisTemplate.class)
-	public StringRedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) {
+    @Bean
+    @ConditionalOnMissingBean(StringRedisTemplate.class)
+    public StringRedisTemplate redisTemplate(RedisConnectionFactory connectionFactory) {
+        StringRedisTemplate template = new StringRedisTemplate(connectionFactory);
+        MontosJsonRedisSerializer nemoJsonRedisSerializer = new MontosJsonRedisSerializer(Object.class);
+        ObjectMapper om = new ObjectMapper();
+        om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        nemoJsonRedisSerializer.setObjectMapper(om);
+        template.setKeySerializer(nemoJsonRedisSerializer);
+        template.setValueSerializer(nemoJsonRedisSerializer);
+        template.afterPropertiesSet();
+        return template;
+    }
 
-		StringRedisTemplate template = new StringRedisTemplate(connectionFactory);
-		NemoJsonRedisSerializer nemoJsonRedisSerializer = new NemoJsonRedisSerializer(Object.class);
-		ObjectMapper om = new ObjectMapper();
-		om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
-		om.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
-		nemoJsonRedisSerializer.setObjectMapper(om);
-		template.setKeySerializer(nemoJsonRedisSerializer);
-		template.setValueSerializer(nemoJsonRedisSerializer);
-		template.afterPropertiesSet();
-		return template;
-	}
+    @Bean
+    public CacheManager cacheManager(StringRedisTemplate redisTemplate, RedisProperties redisProperties) {
+        RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
+        redisCacheManager.setDefaultExpiration(300l);
+        Map<String, Long> map = new HashMap<String, Long>();
+        map.put("day", 86400l);
+        map.put("default", 300l);
+        map.put("list", 1l);
+        if (redisProperties != null && redisProperties.getExpired() != null) {
+            Iterator<Entry<String, Long>> it = redisProperties.getExpired().entrySet().iterator();
+            while (it.hasNext()) {
+                Entry<String, Long> entry = it.next();
+                map.put(entry.getKey(), entry.getValue());
+            }
+        }
+        redisCacheManager.setExpires(map);
+        return redisCacheManager;
+    }
 
-	@Bean
-	public CacheManager cacheManager(StringRedisTemplate redisTemplate, RedisProperties redisProperties) {
-		RedisCacheManager redisCacheManager = new RedisCacheManager(redisTemplate);
-		redisCacheManager.setDefaultExpiration(300l);
-		Map<String, Long> map = new HashMap<String, Long>();
-		map.put("day", 86400l);
-		map.put("default", 300l);
-		map.put("list", 1l);
-		if (redisProperties != null && redisProperties.getExpired() != null) {
-			Iterator<Entry<String, Long>> it = redisProperties.getExpired().entrySet().iterator();
-			while (it.hasNext()) {
-				Entry<String, Long> entry = it.next();
-				map.put(entry.getKey(), entry.getValue());
-			}
-		}
-		redisCacheManager.setExpires(map);
-		return redisCacheManager;
-	}
-
-	@Bean
-	public NemoJsonKeyGennerator keyGenerator() {
-		return new NemoJsonKeyGennerator();
-	}
+    @Bean
+    public MontosJsonKeyGennerator keyGenerator() {
+        return new MontosJsonKeyGennerator();
+    }
 
 }

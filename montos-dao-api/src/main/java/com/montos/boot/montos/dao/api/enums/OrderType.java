@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.dao.api.enums;
+package com.montos.boot.montos.dao.api.enums;
 
 public enum OrderType {
 

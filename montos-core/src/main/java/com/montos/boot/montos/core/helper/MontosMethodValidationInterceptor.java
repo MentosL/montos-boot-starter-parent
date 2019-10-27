@@ -1,6 +1,6 @@
 package com.montos.boot.montos.core.helper;
 
-import com.jimistore.boot.nemo.core.api.exception.ValidatedException;
+import com.montos.boot.montos.core.api.exception.ValidatedException;
 import org.aopalliance.intercept.MethodInvocation;
 import org.springframework.validation.beanvalidation.MethodValidationInterceptor;
 
@@ -9,19 +9,19 @@ import javax.validation.ConstraintViolationException;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-public class NemoMethodValidationInterceptor extends MethodValidationInterceptor {
+public class MontosMethodValidationInterceptor extends MethodValidationInterceptor {
 
-	public NemoMethodValidationInterceptor() {
+	public MontosMethodValidationInterceptor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public NemoMethodValidationInterceptor(Validator validator) {
+	public MontosMethodValidationInterceptor(Validator validator) {
 		super(validator);
 		// TODO Auto-generated constructor stub
 	}
 
-	public NemoMethodValidationInterceptor(ValidatorFactory validatorFactory) {
+	public MontosMethodValidationInterceptor(ValidatorFactory validatorFactory) {
 		super(validatorFactory);
 		// TODO Auto-generated constructor stub
 	}

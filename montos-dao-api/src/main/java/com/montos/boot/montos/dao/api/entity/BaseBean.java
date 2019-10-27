@@ -1,16 +1,14 @@
-package com.jimistore.boot.nemo.dao.api.entity;
+package com.montos.boot.montos.dao.api.entity;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.montos.boot.montos.core.api.annotation.JsonExclusion;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 import javax.persistence.Version;
-
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.jimistore.boot.nemo.core.api.annotation.JsonExclusion;
+import java.io.Serializable;
+import java.util.Date;
 
 @MappedSuperclass
 public class BaseBean<T> implements Serializable{
@@ -20,7 +18,8 @@ public class BaseBean<T> implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	//json的字段需要public声明
-	@JsonExclusion @Transient
+	@JsonExclusion
+	@Transient
 	public T[] ids;	
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	@Column(nullable = false,updatable = false)

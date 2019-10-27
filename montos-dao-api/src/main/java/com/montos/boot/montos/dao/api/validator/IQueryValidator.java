@@ -1,7 +1,7 @@
-package com.jimistore.boot.nemo.dao.api.validator;
+package com.montos.boot.montos.dao.api.validator;
 
-import com.jimistore.boot.nemo.dao.api.exception.QueryValidatorException;
-import com.jimistore.boot.nemo.dao.api.request.IQuery;
+import com.montos.boot.montos.dao.api.exception.QueryValidatorException;
+import com.montos.boot.montos.dao.api.request.IQuery;
 
 public interface IQueryValidator {
 	

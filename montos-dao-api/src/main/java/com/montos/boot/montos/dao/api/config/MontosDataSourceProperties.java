@@ -3,9 +3,9 @@ package com.montos.boot.montos.dao.api.config;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "datasource")
-public class NemoDataSourceProperties {
+public class MontosDataSourceProperties {
 
-	private String type;p
+	private String type;
 
 	private String driverClass;
 
@@ -175,7 +175,7 @@ public class NemoDataSourceProperties {
 		return connectionInitSql;
 	}
 
-	public NemoDataSourceProperties setConnectionInitSql(String connectionInitSql) {
+	public MontosDataSourceProperties setConnectionInitSql(String connectionInitSql) {
 		this.connectionInitSql = connectionInitSql;
 		return this;
 	}
@@ -184,7 +184,7 @@ public class NemoDataSourceProperties {
 		return checkoutTimeout;
 	}
 
-	public NemoDataSourceProperties setCheckoutTimeout(Integer checkoutTimeout) {
+	public MontosDataSourceProperties setCheckoutTimeout(Integer checkoutTimeout) {
 		this.checkoutTimeout = checkoutTimeout;
 		return this;
 	}
@@ -193,7 +193,7 @@ public class NemoDataSourceProperties {
 		return type;
 	}
 
-	public NemoDataSourceProperties setType(String type) {
+	public MontosDataSourceProperties setType(String type) {
 		this.type = type;
 		return this;
 	}

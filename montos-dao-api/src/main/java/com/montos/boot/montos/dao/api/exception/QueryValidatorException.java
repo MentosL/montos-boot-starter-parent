@@ -1,4 +1,4 @@
-package com.jimistore.boot.nemo.dao.api.exception;
+package com.montos.boot.montos.dao.api.exception;
 
 public class QueryValidatorException extends DaoException {
 

@@ -1,25 +1,18 @@
-package com.jimistore.boot.nemo.core.helper;
+package com.montos.boot.montos.core.helper;
 
+import com.montos.boot.montos.core.util.JsonString;
+import org.apache.log4j.Logger;
+import org.springframework.core.annotation.Order;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.log4j.Logger;
-import org.springframework.core.annotation.Order;
-
-import com.jimistore.boot.nemo.core.util.JsonString;
 
 @Order(100)
 @WebFilter(urlPatterns = "/*", filterName = "RequestLoggerFilter")

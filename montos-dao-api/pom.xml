@@ -8,5 +8,35 @@
     <artifactId>montos-dao-api</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 
-    
+    <parent>
+        <groupId>com.montos.boot</groupId>
+        <artifactId>montos-boot-starter-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <hibernate.version>4.3.11.Final</hibernate.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.montos.boot</groupId>
+            <artifactId>montos-core-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 </project>

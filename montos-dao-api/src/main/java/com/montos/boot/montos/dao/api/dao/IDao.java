@@ -1,8 +1,8 @@
-package com.jimistore.boot.nemo.dao.api.dao;
+package com.montos.boot.montos.dao.api.dao;
+
+import com.montos.boot.montos.dao.api.request.IQuery;
 
 import java.util.List;
-
-import com.jimistore.boot.nemo.dao.api.request.IQuery;
 
 public interface IDao {
 	
@@ -15,7 +15,6 @@ public interface IDao {
 	
 	/**
 	 * 删除一些对象
-	 * @param entityClass
 	 * @param query
 	 * @return
 	 */
@@ -23,8 +22,7 @@ public interface IDao {
 	
 	/**
 	 * 删除一些对象
-	 * @param entityClass
-	 * @param query
+	 * @param entity
 	 * @return
 	 */
 	public <T> T delete(T entity);
@@ -47,9 +45,7 @@ public interface IDao {
 	
 	/**
 	 * 批量查询
-	 * @param entityClass 输出实体类型
-	 * @param filter 过滤条件
-	 * @param target
+	 * @param query 输出实体类型
 	 * @return
 	 */
 	public <T> List<T> list(IQuery<T> query);
