@@ -25,6 +25,7 @@
         <module>montos-mq-core</module>
         <module>montos-mq-activemq-starter</module>
         <module>montos-mq-rabbitmq-starter</module>
+        <module>montos-mq-rocketmq-starter</module>
     </modules>
 
     <properties>
@@ -48,6 +49,7 @@
         <montos.mq.core-version>1.0.0-SNAPSHOT</montos.mq.core-version>
         <montos.mq.activemq.starter-version>1.0.0-SNAPSHOT</montos.mq.activemq.starter-version>
         <montos.mq.rabbitmq.starter-version>1.0.0-SNAPSHOT</montos.mq.rabbitmq.starter-version>
+        <montos.mq.rocketmq.starter-version>1.0.0-SNAPSHOT</montos.mq.rocketmq.starter-version>
     </properties>
 
     <profiles> <!--    	 当前的配置是针对于测试环境打包为War，其他的环境打包成为jar-->
@@ -193,6 +195,11 @@
                 <version>${montos.mq.rabbitmq.starter-version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-mq-rocketmq-starter</artifactId>
+                <version>${montos.mq.rocketmq.starter-version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

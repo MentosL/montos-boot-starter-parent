@@ -22,7 +22,7 @@ import java.util.Map.Entry;
 @Configuration
 @AutoConfigureBefore(MontosMQCoreConfiguration.class)
 @EnableConfigurationProperties(MutilRabbitProperties.class)
-public class NemoMQRabbitMQAutoConfiguration implements EnvironmentAware {
+public class MontosMQRabbitMQAutoConfiguration implements EnvironmentAware {
 	
 	public static final String RABBITMQ = "rabbitmq";
 	
