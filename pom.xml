@@ -19,6 +19,7 @@
         <module>montos-core-api</module>
         <module>montos-core</module>
         <module>montos-dao-api</module>
+        <module>montos-dao-core</module>
     </modules>
 
     <properties>
@@ -36,6 +37,7 @@
         <montos.core.api-version>1.0.0-SNAPSHOT</montos.core.api-version>
         <montos.core-version>1.0.0-SNAPSHOT</montos.core-version>
         <montos.dao.api-version>1.0.0-SNAPSHOT</montos.dao.api-version>
+        <montos.dao.core-version>1.0.0-SNAPSHOT</montos.dao.core-version>
     </properties>
 
     <profiles> <!--    	 当前的配置是针对于测试环境打包为War，其他的环境打包成为jar-->
@@ -143,6 +145,12 @@
                 <groupId>com.montos.boot</groupId>
                 <artifactId>montos-dao-api</artifactId>
                 <version>${montos.dao.api-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-dao-core</artifactId>
+                <version>${montos.dao.core-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

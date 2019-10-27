@@ -6,7 +6,6 @@
 
     <groupId>com.montos.boot</groupId>
     <artifactId>montos-dao-api</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <parent>
         <groupId>com.montos.boot</groupId>
