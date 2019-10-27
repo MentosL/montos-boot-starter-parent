@@ -1,9 +1,8 @@
-package com.jimistore.boot.nemo.dao.core.config;
+package com.montos.boot.montos.dao.core.config;
 
+import com.montos.boot.montos.dao.core.helper.InitContextAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.jimistore.boot.nemo.dao.core.helper.InitContextAspect;
 
 @Configuration
 public class NemoDaoAutoConfiguration {

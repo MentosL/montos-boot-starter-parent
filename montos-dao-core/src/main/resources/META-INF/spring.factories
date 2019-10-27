@@ -1,3 +1,3 @@
 # Auto Configure
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.jimistore.boot.nemo.dao.core.config.NemoDaoAutoConfiguration
+com.montos.boot.montos.dao.core.config.NemoDaoAutoConfiguration

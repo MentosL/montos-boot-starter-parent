@@ -1,14 +1,7 @@
-package com.jimistore.boot.nemo.dao.core.helper;
+package com.montos.boot.montos.dao.core.helper;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.montos.boot.montos.core.helper.Context;
+import com.montos.boot.montos.dao.api.entity.BaseBean;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,8 +9,8 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 
-import com.jimistore.boot.nemo.core.helper.Context;
-import com.jimistore.boot.nemo.dao.api.entity.BaseBean;
+import java.lang.reflect.Field;
+import java.util.*;
 
 @Aspect
 @Order(11)
@@ -25,7 +18,7 @@ public class InitContextAspect {
 
 	private static final Logger log = Logger.getLogger(InitContextAspect.class);
 	
-	@Pointcut("execution(* com.jimistore.boot.nemo.dao.api.dao.IDao.*(..))")
+	@Pointcut("execution(* com.montos.boot.montos.dao.api.dao.IDao.*(..))")
 	public void beforeDao(){}
 	
 	@Before("beforeDao()")
