@@ -27,6 +27,7 @@
         <module>montos-mq-rabbitmq-starter</module>
         <module>montos-mq-rocketmq-starter</module>
         <module>montos-rpc-eureka-api</module>
+        <module>montos-sliding-window-starter</module>
     </modules>
 
     <properties>
@@ -52,6 +53,7 @@
         <montos.mq.rabbitmq.starter-version>1.0.0-SNAPSHOT</montos.mq.rabbitmq.starter-version>
         <montos.mq.rocketmq.starter-version>1.0.0-SNAPSHOT</montos.mq.rocketmq.starter-version>
         <montos.rpc.eureka.api-version>1.0.0-SNAPSHOT</montos.rpc.eureka.api-version>
+        <montos.sliding.window.starter-version>1.0.0-SNAPSHOT</montos.sliding.window.starter-version>
     </properties>
 
     <profiles> <!--    	 当前的配置是针对于测试环境打包为War，其他的环境打包成为jar-->
@@ -207,6 +209,12 @@
                 <groupId>com.montos.boot</groupId>
                 <artifactId>montos-rpc-eureka-api</artifactId>
                 <version>${montos.rpc.eureka.api-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.montos.boot</groupId>
+                <artifactId>montos-sliding-window-starter</artifactId>
+                <version>${montos.sliding.window.starter-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
